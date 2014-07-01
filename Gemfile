@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml'
 gem 'devise'
+gem 'httparty', '~> 0.13.1'
 
 gem 'jbuilder', '~> 2.0'
 

@@ -55,6 +55,6 @@ class PlaylistsController < ApplicationController
 
   def playlist_params
     params.require(:playlist).permit(:name, :description,
-                                     tracks_attriabutes: [:_destroy, :id, :url])
+                                     tracks_attributes: [:_destroy, :id, :url])
   end
 end

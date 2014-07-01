@@ -9,6 +9,15 @@
     Created by:
     = link_to @playlist.user.email, user_playlists_path(@playlist.user)
 
-%ol
-  - @tracks.each do |track|
-    %li= link_to 'track', track
+- @tracks.each do |track|
+  .panel.panel-default.panel-tracks
+    .panel-body
+      .row
+        .col-md-2
+          = image_tag track.thumbnail, class: 'track-thumbnail'
+        .col-md-10
+          = link_to 'Start now', track_path(@playlist, track), class: 'btn btn-success pull-right track-start-button'
+          %h1= link_to track.title, track_path(@playlist, track), class: 'track-panel-link'
+          %p.item-description Test
+    .panel-footer
+      Progress: 90 / 100 (90%)
