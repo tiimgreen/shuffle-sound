@@ -24,5 +24,4 @@
             %li
               %a{href: "#"} Something else here
             %li.divider
-            %li
-              %a{href: "#"} Separated link
+            %li= link_to 'Logout', destroy_user_session_path, method: :delete

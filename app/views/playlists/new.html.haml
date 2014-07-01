@@ -1,2 +1,16 @@
-<h1>Playlists#new</h1>
-<p>Find me in app/views/playlists/new.html.erb</p>
+- provide :title, 'New Playlist'
+
+.panel.panel-default.form-panel
+  .panel-heading
+    %h4= yield :title
+  .panel-body
+    = form_for @playlist do |f|
+
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', placeholder: 'Name', autofocus: true
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control', placeholder: 'Description', rows: '3'
+      .form-group
+        = f.submit "Create Playlist"
