@@ -16,8 +16,7 @@
         .col-md-2
           = image_tag track.thumbnail, class: 'track-thumbnail'
         .col-md-10
-          = link_to 'Start now', track_path(@playlist, track), class: 'btn btn-success pull-right track-start-button'
+          .pull-right
+            %span.track-points= track.points
+            = link_to 'Vote', track_path(@playlist, track), class: 'btn btn-success track-start-button'
           %h1= link_to track.title, track_path(@playlist, track), class: 'track-panel-link'
-          %p.item-description Test
-    .panel-footer
-      Progress: 90 / 100 (90%)
