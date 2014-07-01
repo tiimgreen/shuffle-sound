@@ -11,6 +11,7 @@
       %ul.nav.navbar-nav.navbar-right
         %li= link_to 'Help', help_path
         - if user_signed_in?
+          %li= link_to 'New Playlist', new_playlist_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               = current_user.email

@@ -1,0 +1,16 @@
+= form_for @playlist do |f|
+
+  = render 'shared/error_messages', object: f.object
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', placeholder: 'Name', autofocus: true
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control', placeholder: 'Description', rows: '3'
+  = f.fields_for :tracks do |builder|
+    = render 'playlists/track_fields', f: builder
+  .form-group
+    = link_to_add_fields "Add Track", f, :tracks
+  .form-group
+    = f.submit "Submit"

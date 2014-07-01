@@ -1,6 +1,12 @@
 class Playlist < ActiveRecord::Base
   before_create :set_ref
+
   belongs_to :user
+
+  has_many :tracks, dependent: :destroy
+  accepts_nested_attributes_for :tracks,
+                                reject_if: proc { |a| a[:content].blank? },
+                                allow_destroy: true
 
   validates :name, presence: true, length: { maximum: 100 }
 

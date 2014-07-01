@@ -3,6 +3,7 @@ class PlaylistsController < ApplicationController
 
   def new
     @playlist = Playlist.new
+    3.times { track = @playlist.tracks.build }
   end
 
   def create
@@ -18,6 +19,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find_by ref: params[:ref]
+    @tracks = @playlist.tracks
   end
 
   def edit
@@ -39,11 +41,20 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
+    @playlist = Playlist.find_by ref: params[:ref]
+    if @playlist.destroy
+      flash[:success] = 'Playlist successfully deleted'
+      redirect_to user_playlists_path current_user
+    else
+      flash[:warning] = 'Problem deleting playlist'
+      redirect_to playlist_path @playlist
+    end
   end
 
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name, :description)
+    params.require(:playlist).permit(:name, :description,
+                                     tracks_attriabutes: [:_destroy, :id, :url])
   end
 end

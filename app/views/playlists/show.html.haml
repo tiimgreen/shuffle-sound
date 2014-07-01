@@ -1,9 +1,14 @@
+.playlist-links
+  - if current_user && current_user == @playlist.user
+    = link_to 'Edit Playlist', edit_playlist_path(@playlist), class: 'btn btn-primary'
+    = link_to 'Delete Playlist', delete_playlist_path(@playlist), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+
 %h1
   = @playlist.name
   %small
     Created by:
     = link_to @playlist.user.email, user_playlists_path(@playlist.user)
 
-- if current_user && current_user == @playlist.user
-  = link_to 'Edit Playlist', edit_playlist_path(@playlist), class: 'btn btn-primary'
-
+%ol
+  - @tracks.each do |track|
+    %li= link_to 'track', track
