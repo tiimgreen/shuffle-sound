@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'playlists/new'
+
+  get 'playlists/show'
+
+  get 'playlists/edit'
+
+  get 'playlists/index'
+
   devise_for :users
 
   root to: 'pages#home'

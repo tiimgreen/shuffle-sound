@@ -1,19 +1,23 @@
-= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-horizontal') do |f|
-  = devise_error_messages!
-  .form-group
-    = f.label :email, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
-  .form-group
-    = f.label :password, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
-  .form-group
-    = f.label :password_confirmation, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password Confirmation'
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      %div= f.submit "Sign up", class: 'btn btn-primary'
-
-= render "devise/shared/links"
+.panel.panel-default.form-panel
+  .panel-heading
+    %h4 Sign in
+  .panel-body
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-horizontal') do |f|
+      = devise_error_messages!
+      .form-group
+        = f.label :email, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Email'
+      .form-group
+        = f.label :password, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
+      .form-group
+        = f.label :password_confirmation, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password Confirmation'
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          %div= f.submit "Sign Up", class: "btn btn-primary"
+  .panel-footer
+    = render "devise/shared/links"
