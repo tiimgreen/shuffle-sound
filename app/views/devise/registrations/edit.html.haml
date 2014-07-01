@@ -13,27 +13,20 @@
       Currently waiting confirmation for:
       = resource.unconfirmed_email
   .form-group
-    .col-sm-2
-      = f.label :password, class: 'control-label'
-      (leave blank if you don't want to change it)
+    = f.label :password, 'New Password', class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
+      = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "New Password (leave blank if you don't want to change"
   .form-group
-    = f.label :password_confirmation, class: 'col-sm-2 control-label'
+    = f.label :password_confirmation, 'New Password Confirmation', class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password Confirmation'
-  .form-group
-    .col-sm-2
-      = f.label :current_password, class: 'control-label'
-      (we need your current password to confirm your changes)
+      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'New Password Confirmation'
+  .form-group.current-password
+    = f.label :current_password, 'Current Password', class: 'control-label col-sm-2'
     .col-sm-10
       = f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: 'Current Password'
+      %span.help-block (we need your current password to confirm your changes)
   .form-group
     .col-sm-offset-2.col-sm-10
-      %div= f.submit "Update", class: 'btn btn-primary'
+      = f.submit "Update", class: 'btn btn-primary'
 
-%p
-  Unhappy?
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-
-  = link_to "Back", :back %>
+.cancel-account= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'

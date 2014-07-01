@@ -2,5 +2,8 @@
   = @playlist.name
   %small
     Created by:
-    = @playlist.user.email
+    = link_to @playlist.user.email, user_playlists_path(@playlist.user)
+
+- if current_user && current_user == @playlist.user
+  = link_to 'Edit Playlist', edit_playlist_path(@playlist), class: 'btn btn-primary'
 

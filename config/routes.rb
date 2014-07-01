@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/playlists'
+
   devise_for :users
 
   root to: 'pages#home'
@@ -14,4 +16,6 @@ Rails.application.routes.draw do
   match '/playlists/:ref',      to: 'playlists#update',  via: 'patch'
   match '/playlists',           to: 'playlists#create',  via: 'post',   as: :create_playlist
   match '/playlists/:ref',      to: 'playlists#destroy', via: 'delete', as: :delete_playlist
+
+  match '/user/:id/playlists',  to: 'users#playlists',   via: 'get',    as: :user_playlists
 end
