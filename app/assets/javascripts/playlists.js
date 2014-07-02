@@ -12,4 +12,10 @@ function add_fields(link, association, content) {
 $(document).ajaxSuccess(function(e, data, status, xhr) {
   var result = JSON.parse(data.responseText);
   $(".track-points.id-" + result.id).html(result.points);
-})
+});
+
+$("#track-sorting").change(function() {
+  alert(this.val());
+});
+
+// window.location.href

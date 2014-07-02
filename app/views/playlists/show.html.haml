@@ -22,5 +22,21 @@
           %br
           = f.submit "Add Track", class: 'btn btn-default'
 
-- @tracks.each do |track|
-  = render 'playlists/track', track: track
+.row
+  .col-md-3.col-md-offset-9
+    .pull-right
+      Sort by:
+      %select#track-sorting
+        %option{value: "newest", selected: "selected"} Newest
+        %option{value: "top"} Top
+
+- if params[:sort]
+  - if params[:sort] == 'newest'
+    - @tracks_newest.each do |track|
+      = render 'playlists/track', track: track
+  - else params[:sort] == 'top'
+    - @tracks_top.each do |track|
+      = render 'playlists/track', track: track
+- else
+  - @tracks_newest.each do |track|
+    = render 'playlists/track', track: track

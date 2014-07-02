@@ -1,12 +1,12 @@
 .panel.panel-default.panel-tracks
   .panel-body
     .row
-      .col-md-2
+      .col-md-1
         = image_tag track.thumbnail, class: 'track-thumbnail'
-      .col-md-10
+      .col-md-11
         .pull-right
           %span.track-points{class: "id-#{track.id}"}= track.points
           = form_for @track, url: track_vote_path, method: :post, remote: true, html: { class: 'track-vote-form' } do |f|
             = f.hidden_field :id, value: track.id
             = f.submit "Vote", class: 'btn btn-success', id: 'vote-button'
-        %h1= track.title
+        %h3.track-title= track.title

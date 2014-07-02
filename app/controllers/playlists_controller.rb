@@ -19,7 +19,8 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find_by ref: params[:ref]
-    @tracks = @playlist.tracks order: 'points DESC'
+    @tracks_top = @playlist.tracks.order('points DESC')
+    @tracks_newest = @playlist.tracks.order('created_at DESC')
     @track = Track.new
   end
 

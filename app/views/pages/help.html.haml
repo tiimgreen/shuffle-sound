@@ -17,3 +17,8 @@
     %h4 How do I make a playlist?
     %p
       To make a playlist simply create an account and press the 'New Playlist' button in the menu. You will then be given an easy to remember URL to share.
+.row
+  .col-md-12
+    .center
+      - unless user_signed_in?
+        = link_to 'Sign up now', new_user_registration_path, class: 'btn btn-primary btn-large'
