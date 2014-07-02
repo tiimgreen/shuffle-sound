@@ -19,7 +19,8 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find_by ref: params[:ref]
-    @tracks = @playlist.tracks
+    @tracks = @playlist.tracks order: 'points DESC'
+    @track = Track.new
   end
 
   def edit

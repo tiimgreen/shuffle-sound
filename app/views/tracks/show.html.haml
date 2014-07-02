@@ -1,5 +1,9 @@
 %h1= @track.title
 
-#video
-  = @track.html.html_safe
+.row
+  .col-md-9
+    #video
+      = @track.html.html_safe
+  .col-md-3
+    %h4 Up Next...
 

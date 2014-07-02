@@ -17,5 +17,8 @@ Rails.application.routes.draw do
 
   match '/user/:id/playlists',  to: 'users#playlists',   via: 'get',    as: :user_playlists
 
-  match '/playlists/:ref/tracks/:id', to: 'tracks#show', via: 'get', as: :track
+  match '/playlists/:ref/tracks/:id',  to: 'tracks#show',    via: 'get',  as: :track
+  match '/playlists/:ref/tracks/vote', to: 'tracks#vote',    via: 'post', as: :track_vote
+  match '/playlists/:ref/tracks',      to: 'playlists#show', via: 'get',  as: :tracks
+  match '/playlists/:ref/tracks',      to: 'tracks#create',  via: 'post', as: :create_track
 end

@@ -9,14 +9,13 @@
     Created by:
     = link_to @playlist.user.email, user_playlists_path(@playlist.user)
 
+.row
+  .col-md-12
+    .center
+      %h2 Want to add a song?
+      = form_for @track do |f|
+        = f.url_field :url, placeholder: 'YouTube URL'
+        = f.submit "Add Track"
+
 - @tracks.each do |track|
-  .panel.panel-default.panel-tracks
-    .panel-body
-      .row
-        .col-md-2
-          = image_tag track.thumbnail, class: 'track-thumbnail'
-        .col-md-10
-          .pull-right
-            %span.track-points= track.points
-            = link_to 'Vote', track_path(@playlist, track), class: 'btn btn-success track-start-button'
-          %h1= link_to track.title, track_path(@playlist, track), class: 'track-panel-link'
+  = render 'playlists/track', track: track

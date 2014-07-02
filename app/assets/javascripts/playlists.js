@@ -8,3 +8,8 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
+$(document).ajaxSuccess(function(e, data, status, xhr) {
+  var result = JSON.parse(data.responseText);
+  $(".track-points.id-" + result.id).html(result.points);
+})

@@ -1,7 +1,9 @@
-- provide :title, 'Edit Playlist'
+- provide :title, "Edit #{@playlist.name}"
 
 .panel.panel-default.form-panel
   .panel-heading
-    %h4= yield :title
+    %h4
+      Edit
+      = link_to @playlist.name, @playlist
   .panel-body
     = render 'playlists/form'

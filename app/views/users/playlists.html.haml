@@ -1,5 +1,7 @@
 %h1= "#{@user.email}'s Playlists"
 
-%ul
+%div.list-group
   - @playlists.each do |playlist|
-    %li= link_to playlist.name, playlist
+    %a{href: playlist_path(playlist), class: 'list-group-item'}
+      %span.badge= playlist.tracks.count
+      = playlist.name
