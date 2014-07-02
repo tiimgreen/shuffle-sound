@@ -20,10 +20,15 @@ class Track < ActiveRecord::Base
     @parsed_response['html']
   end
 
+  def length
+    Time.at(@video_info.duration).utc.strftime("%M:%S")
+  end
+
   private
 
   def get_info
     @url = "http://www.youtube.com/oembed?url=#{self.url}&format=json"
     @parsed_response = JSON.parse(HTTParty.get(@url).to_json)
+    @video_info = VideoInfo.new(self.url)
   end
 end

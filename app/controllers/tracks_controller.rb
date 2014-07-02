@@ -14,6 +14,7 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find params[:id]
+    @playlist = @track.playlist
   end
 
   def vote

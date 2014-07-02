@@ -9,4 +9,6 @@
           = form_for @track, url: track_vote_path, method: :post, remote: true, html: { class: 'track-vote-form' } do |f|
             = f.hidden_field :id, value: track.id
             = f.submit "Vote", class: 'btn btn-success', id: 'vote-button'
-        %h3.track-title= track.title
+        %h3.track-title
+          = track.title
+          %small= "(#{track.length})"

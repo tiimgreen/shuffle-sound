@@ -5,5 +5,7 @@
     #video
       = @track.html.html_safe
   .col-md-3
-    %h4 Up Next...
+    %h4
+      Up Next -
+      = link_to @playlist.name, @playlist
 
