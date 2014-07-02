@@ -21,7 +21,13 @@ class Track < ActiveRecord::Base
   end
 
   def length
+    get_info
     Time.at(@video_info.duration).utc.strftime("%M:%S")
+  end
+
+  def length_in_seconds
+    get_info
+    @video_info.duration
   end
 
   private

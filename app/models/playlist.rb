@@ -11,6 +11,19 @@ class Playlist < ActiveRecord::Base
     ref.to_s
   end
 
+  def total_length
+    time = 0
+    self.tracks.each do |track|
+      time += track.length_in_seconds
+    end
+
+    if Time.at(time).utc.strftime("%H") == "00"
+      Time.at(time).utc.strftime("%Mm %Ss")
+    else
+      Time.at(time).utc.strftime("%Hh %Mm")
+    end
+  end
+
   private
 
   def set_ref

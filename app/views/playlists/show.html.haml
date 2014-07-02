@@ -5,10 +5,11 @@
 
 %h1
   = @playlist.name
-  %small
-    Created by:
-    = link_to @playlist.user.name, user_playlists_path(@playlist.user)
-%p= @playlist.description
+  %small= @playlist.total_length
+%p
+  Created by:
+  = link_to @playlist.user.name, user_playlists_path(@playlist.user)
+%h4= @playlist.description
 
 .row
   .col-md-12

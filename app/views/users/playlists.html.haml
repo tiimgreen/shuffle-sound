@@ -3,5 +3,5 @@
 %div.list-group
   - @playlists.each do |playlist|
     %a{href: playlist_path(playlist), class: 'list-group-item'}
-      %span.badge= pluralize(playlist.tracks.count, 'track')
+      %span.badge= "(#{playlist.total_length})"
       = playlist.name
