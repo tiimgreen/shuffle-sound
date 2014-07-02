@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :playlists
+
+  validates :name, presence: true, length: { maximum: 100 }
 end

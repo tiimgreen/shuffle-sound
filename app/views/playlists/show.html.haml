@@ -7,16 +7,20 @@
   = @playlist.name
   %small
     Created by:
-    = link_to @playlist.user.email, user_playlists_path(@playlist.user)
+    = link_to @playlist.user.name, user_playlists_path(@playlist.user)
+%p= @playlist.description
 
 .row
   .col-md-12
-    .center
+    .center.jumbotron
       %h2 Want to add a song?
-      = form_for @track do |f|
+      = form_for @track, html: { class: 'form-inline' } do |f|
         = render 'shared/error_messages', object: f.object
-        = f.url_field :url, placeholder: 'YouTube URL'
-        = f.submit "Add Track"
+        .form-group
+          = f.url_field :url, placeholder: 'YouTube URL', class: 'form-control add-track-field'
+          %br
+          %br
+          = f.submit "Add Track", class: 'btn btn-default'
 
 - @tracks.each do |track|
   = render 'playlists/track', track: track
