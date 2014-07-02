@@ -12,15 +12,17 @@ class Playlist < ActiveRecord::Base
   end
 
   def total_length
-    time = 0
+    seconds = 0
     self.tracks.each do |track|
-      time += track.length_in_seconds
+      seconds += track.length_in_seconds
     end
 
-    if Time.at(time).utc.strftime("%H") == "00"
-      Time.at(time).utc.strftime("%Mm %Ss")
+    time = Time.at(seconds).utc
+
+    if time.strftime("%H") == "00"
+      time.strftime("%Mm %Ss")
     else
-      Time.at(time).utc.strftime("%Hh %Mm")
+      time.strftime("%Hh %Mm")
     end
   end
 
