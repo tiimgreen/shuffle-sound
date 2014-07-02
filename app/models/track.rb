@@ -1,6 +1,10 @@
 class Track < ActiveRecord::Base
   belongs_to :playlist
 
+  validates :url, uniqueness: { case_sensitive: false,
+                                scope: :playlist,
+                                message: "that song is already in the playlist" }
+
   def title
     get_info
     @parsed_response['title']

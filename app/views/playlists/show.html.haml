@@ -14,6 +14,7 @@
     .center
       %h2 Want to add a song?
       = form_for @track do |f|
+        = render 'shared/error_messages', object: f.object
         = f.url_field :url, placeholder: 'YouTube URL'
         = f.submit "Add Track"
 
